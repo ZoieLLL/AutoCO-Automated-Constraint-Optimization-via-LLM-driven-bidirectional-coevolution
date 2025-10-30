@@ -2,7 +2,7 @@
 
 ## 🎯 Core Innovation
 
-Large Language Model (LLM)-based optimization has recently shown promise for autonomous problem solving, yet most approaches still cast LLMs as passive constraint checkers rather than proactive strategy designers, limiting their effectiveness on complex Constraint Optimization Problems (COPs). 
+Large Language Model (LLM)-based optimization has recently shown promise for autonomous problem solving, yet most approaches still cast LLMs as passive constraint checkers rather than proactive strategy designers, limiting their effectiveness on complex Constraint Optimization Problems (COPs).
 
 **The Fundamental Challenge**: Most real-world COPs are NP-hard, with complexity arising from hard constraints that create conflicting decisions and global dependencies. These constraints fragment the feasible region, complicating the solution process and underscoring the necessity for efficient and high-quality solutions. As hard constraints increase, obtaining feasible solutions becomes more difficult, resulting in ineffective feedback that can lead to unguided search processes producing suboptimal designs.
 
@@ -38,16 +38,20 @@ We propose a structured three-step relaxation method that transforms expert-depe
 - **Strategy Generation**: Systematic synthesis of diverse relaxation strategies adhering to constraint structures
 
 ## 🏗 System Architecture
-
-<img src="figure/figure_ours.jpg" width="500" height="300" alt="AutoCO Architecture">
-
-*Figure 1: Architecture of AutoCO. Initially, we use LLMs to parse user-input problems and generate initial constraint relaxation strategies. Next, the bidirectional coevolution mechanism combining local EA and global MCTS explores and optimizes strategies and codes. Finally, we evaluate the generated algorithms on problem instances and provide individual fitness feedback.*
+<div align="center">
+<img src="figure/figure_ours.jpg" width="1000" alt="AutoCO Architecture">
+</div>
+<p align="center">
+<em>Figure 1: Architecture of AutoCO. Initially, we use LLMs to parse user-input problems and generate initial constraint relaxation strategies. Next, the bidirectional coevolution mechanism combining local EA and global MCTS explores and optimizes strategies and codes. Finally, we evaluate the generated algorithms on problem instances and provide individual fitness feedback.</em>
+</p>
 
 ## 📊 Method Comparison
-
-<img src="figure/figure_Intro.jpg" width="400" height="250" alt="Method Comparison">
-
-*Figure 2: Comparisons of human/LLM-based solutions for COPs. (A) Expert-designed method leverages human analysis. (B) Current LLM methods focus on code generation. (C) Our AutoCO combines human-inspired relaxation strategies with automation to effectively discover feasible solutions.*
+<div align="center">
+<img src="figure/figure_Intro.jpg" width="800" alt="Method Comparison">
+</div>
+<p align="center">
+<em>Figure 2: Comparisons of human/LLM-based solutions for COPs. (A) Expert-designed method leverages human analysis. (B) Current LLM methods focus on code generation. (C) Our AutoCO combines human-inspired relaxation strategies with automation to effectively discover feasible solutions.</em>
+</p>
 
 ## 🏆 Experimental Results
 
@@ -58,10 +62,14 @@ Extensive experiments on three challenging COP benchmarks validate AutoCO's cons
 - **Effective constraint handling** in VRPTW, VRPTW-fuel, and Safety Facility Layout problems
 - **Rapid feasible solution generation** even under hard constraints
 - **Superior performance** where exact solvers like Gurobi struggle with larger instances
-
+- 
+<div align="center">
 <img src="figure/figure_plot.jpg" width="400" height="250" alt="Performance Comparison">
+</div>
+<p align="center">
+<em>Figure 3: AutoCO (blue) vs. Current LLM method (green) performance on VRPTW-fuel problems over 100 iterations. The autonomous constraint relaxation temporarily expands feasible regions, enhancing optimization feedback.</em>
+</p>
 
-*Figure 3: AutoCO (blue) vs. Current LLM method (green) performance on VRPTW-fuel problems over 100 iterations. The autonomous constraint relaxation temporarily expands feasible regions, enhancing optimization feedback.*
 
 ## 🔬 Technical Approach
 
