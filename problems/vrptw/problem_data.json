@@ -1,0 +1,57 @@
+{
+  "problem_type": "vrptw",
+  "description": "Vehicle Routing Problem with Time Windows (VRPTW)",
+  "detailed_description": {
+    "overview": "A fleet of vehicles starts from a depot and serves all customers. Each customer has a demand, a service time and a time window. Each vehicle has a capacity limit. Minimize the total travel distance.",
+    "constraints": [
+      {
+        "name": "capacity_constraint",
+        "description": "The total demand on each route must not exceed the vehicle capacity.",
+        "calculation": "Sum the demands of all customers on a route.",
+        "formula": "sum(demands) <= vehicle_capacity"
+      },
+      {
+        "name": "time_window_constraint",
+        "description": "Each customer must be served within its time window.",
+        "calculation": "Arrival time must lie within [earliest, latest].",
+        "formula": "earliest <= arrival_time <= latest"
+      },
+      {
+        "name": "fleet_size_constraint",
+        "description": "The number of vehicles used must not exceed the available fleet.",
+        "calculation": "Count the number of routes.",
+        "formula": "number_of_routes <= max_vehicles"
+      },
+      {
+        "name": "visit_constraint",
+        "description": "Every customer must be visited exactly once.",
+        "calculation": "Check that every customer appears exactly once across all routes.",
+        "formula": "all customers visited exactly once"
+      }
+    ],
+    "objectives": [
+      {
+        "name": "minimize_total_distance",
+        "description": "Minimize the total travel distance of all vehicles.",
+        "direction": "minimize",
+        "calculation": "Sum the distance of every route.",
+        "formula": "sum(distance(route[i], route[i+1]))"
+      }
+    ]
+  },
+  "solution_format": {
+    "route": {
+      "description": "A flat route list. 0 is the depot and consecutive 0s split routes.",
+      "example": [0, 2, 5, 1, 0, 3, 4, 0]
+    }
+  },
+  "parameters": {
+    "depot": "depot index (usually 0)",
+    "coordinates": "list of [x, y] coordinates for the depot and customers",
+    "demands": "demand of each node (0 for the depot)",
+    "vehicle_capacity": "maximum load per vehicle",
+    "time_windows": "time window [earliest, latest] of each node",
+    "service_time": "service time of each node",
+    "max_vehicles": "maximum number of vehicles"
+  }
+}

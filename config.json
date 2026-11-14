@@ -1,0 +1,41 @@
+{
+  "llm": {
+    "default": {
+      "max_retries": 5,
+      "retry_delay": 10,
+      "retry_backoff": 2
+    },
+    "providers": [
+      {
+        "name": "LLM",
+        "base_url": "your base url",
+        "api_key": "your API keys",
+        "backup_api_keys": [
+          "your API keys"
+        ],
+        "models": {
+          "strategy": "your model",
+          "code": "your model",
+          "analysis": "your model"
+        }
+      }
+    ],
+    "strategy": {
+      "temperature": 0.7,
+      "max_tokens": 4096
+    },
+    "code": {
+      "temperature": 0.2,
+      "max_tokens": 7000
+    },
+    "analysis": {
+      "temperature": 0.3,
+      "max_tokens": 4096
+    }
+  },
+  "repair_mechanism": {
+    "enabled": false,
+    "max_repair_attempts": 3,
+    "repair_timeout": 60
+  }
+}
